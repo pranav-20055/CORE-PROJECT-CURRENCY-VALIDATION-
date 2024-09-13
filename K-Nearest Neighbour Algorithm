@@ -1,0 +1,36 @@
+# KNN Algorithm
+knn = KNeighborsClassifier(n_neighbors=5)
+
+# fitting training data
+knn.fit(X_train, y_train)
+
+# predicted data
+y_predicted = knn.predict(X_test)
+
+# KNN Results
+
+# Classification Report
+print("Classification Report")
+print(metrics.classification_report(y_test, y_predicted))
+
+# Accuracy Score matrix
+print('Accuracy of KNN Algorithm: '
+      , metrics.accuracy_score(y_test, y_predicted)*100)
+# F1 Score
+f1_score_knn = metrics.f1_score(y_test, y_predicted, average='micro')
+
+# Confusion matrix
+cm_knn = metrics.confusion_matrix(y_test, y_predicted)
+
+# recall
+recall_KNN = metrics.recall_score(y_test, y_predicted)
+
+# Heatmap confusion matrix 
+sns.heatmap(cm_knn, annot=True, fmt=".0f", linewidths=3, square=True, cmap='Blues', color="#cd1076")
+plt.ylabel('actual label')
+plt.xlabel('predicted label')
+
+# show F1 Score and Recall 
+plt.title(f'F1 Score [KNN Algorithm]: {f1_score_knn:.2f}\n'
+          f'Recall [KNN Algorithm]: {recall_KNN:.2f}', size=14, color='black')
+plt.show()
