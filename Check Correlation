@@ -1,0 +1,8 @@
+# Check correlation
+print('Correlation:')
+print(data.corr()['Target'].sort_values(ascending=False))
+sns.heatmap(data.corr(), annot=True, cmap="RdBu")
+plt.show()
+
+print('Number of Authentication= ', data['Target'][data['Target'] == 0].count())
+print('Number of Unauthenticated= ', data['Target'][data['Target'] == 1].count())
