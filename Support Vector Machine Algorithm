@@ -1,0 +1,38 @@
+# Support Vector Machine
+# The best SVM "rdf kernel and C=100"
+# SVM with c=100.0
+svm = SVC(kernel='rbf', C=100.0)
+
+# Fitting data
+svm.fit(X_train, y_train)
+
+# predicted data
+y_predict = svm.predict(X_test)
+
+# SVM Results
+print('Classification Reports:')
+print(metrics.classification_report(y_test, y_predicted))
+
+# Accuracy score matrix
+print('Accuracy of SVM Algorithm: '
+      , metrics.accuracy_score(y_test, y_predicted)*100)
+
+# F1 Score
+f1_score_SVM = metrics.f1_score(y_test, y_predicted, average='micro')
+
+# confusion matrix
+cm_SVM = metrics.confusion_matrix(y_test, y_predicted)
+
+# recall 
+recall_SVM = metrics.recall_score(y_test, y_predicted)
+
+# Heatmap confusion matrix 
+sns.heatmap(cm_log, annot=True, fmt=".0f", linewidths=3, square=True, cmap='Blues', color="#cd1076")
+plt.ylabel('actual label')
+plt.xlabel('predicted label')
+
+# show F1 Score and Recall
+plt.title(f'F1 Score [SVM Algorithm]: {f1_score_SVM:.2f}\n'
+          f'Recall [SVM Algorithm]: {recall_SVM:.2f}', size=14, color='black')
+plt.show()
+print('\n')
