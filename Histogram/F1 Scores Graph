@@ -1,0 +1,15 @@
+plt.figure(figsize=(12, 6))
+model_f1_score = [f1_score_SVM, f1_score_log, f1_score_knn, f1_score_NB]
+recalls = [recall_SVM, recall_log, recall_KNN, recall_NB]
+model_name = ['SVM', 'LogisticRegression', 'KNN', 'Naive Bayes']
+recall_name = ['SVM', 'LogisticRegression', 'KNN', 'Naive Bayes']
+
+# Barplot f1 score
+sns.barplot(x=model_f1_score, y=model_name, palette='magma')
+plt.title('Algorithms F1 Score')
+plt.show()
+
+# barplot recall 
+sns.barplot(x=recalls, y=recall_name, palette='magma')
+plt.title('Algorithms Recall')
+plt.show()
