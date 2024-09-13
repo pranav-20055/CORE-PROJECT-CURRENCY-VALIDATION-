@@ -1,0 +1,34 @@
+log = LogisticRegression()
+
+# fitting data
+model = log.fit(X_train, y_train)
+
+# Predicted data
+y_predicted = log.predict(X_test)
+
+# Logistic Regression Results
+print('Classification Report:')
+print(metrics.classification_report(y_test, y_predicted))
+
+# Accuarcy score matrix
+print('Accuracy of Logistic Regression Algorithm: '
+      , metrics.accuracy_score(y_test, y_predicted)*100)
+
+# F1 Score
+f1_score_log = metrics.f1_score(y_test, y_predicted, average='micro')
+
+# Confusion martrix
+cm_log = metrics.confusion_matrix(y_test, y_predicted)
+
+# recall 
+recall_log = metrics.recall_score(y_test, y_predicted)
+
+# Heatmap confusion matrix 
+sns.heatmap(cm_log, annot=True, fmt=".0f", linewidths=3, square=True, cmap='Blues', color="#cd1076")
+plt.ylabel('actual label')
+plt.xlabel('predicted label')
+
+# show F1 Score and Recall
+plt.title(f'F1 Score [Logistic Regression Algorithm]: {f1_score_log:.2f}\n'
+          f'Recall [Logistic Regression Algorithm]: {recall_log:.2f}', size=14, color='black')
+plt.show()
