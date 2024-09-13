@@ -1,0 +1,11 @@
+# labeling data
+labels = ['Variance', 'Skewness', 'Kurtosis', 'Entropy', 'Target']
+data.columns = labels
+print('Columns Names:', data.columns, '\n')
+print('Data Describe:\n ', data.describe(), '\n')
+print('Data Information:'); print(data.info())
+
+# Check For duplicated
+print(data.duplicated().any())
+duplicated = data.duplicated()
+print('Number of duplicated data: ', duplicated[duplicated == True].size)
